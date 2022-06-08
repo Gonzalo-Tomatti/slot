@@ -39,6 +39,7 @@ export const GlobalProvider = ({ children }) => {
   const [msg, setMsg] = useState("Good Luck!");
   const [isSpinning, setIsSpinning] = useState(false);
   const [results, setResults] = useState([]);
+  const [showModal, setShowModal] = useState(true);
 
   //este boolean indica si los íconos de la maquinita actuales son de cuando se cargó la página
   const [firstLoad, setFirstLoad] = useState(true);
@@ -50,10 +51,14 @@ export const GlobalProvider = ({ children }) => {
     difficulty === "easy" ? setDifficulty("hard") : setDifficulty("easy");
   };
 
+  const showRules = () => {
+    setShowModal(!showModal);
+  };
+
   useEffect(() => {
     if (difficulty === "easy") {
       setIcons([
-        <FaCss3 className="icon css3" />,
+        // <FaCss3 className="icon css3" />,
         <FaHtml5 className="icon html5" />,
       ]);
     } else {
@@ -180,7 +185,17 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ rows, cash, bet, msg, difficulty, changeDifficulty, spin }}
+      value={{
+        rows,
+        cash,
+        bet,
+        msg,
+        difficulty,
+        showModal,
+        changeDifficulty,
+        spin,
+        showRules,
+      }}
     >
       {children}
     </GlobalContext.Provider>
