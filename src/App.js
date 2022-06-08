@@ -7,7 +7,7 @@ function App() {
   return (
     <GlobalProvider>
       <div className="container">
-        <h1>Web Development Slot!</h1>
+        <h1 className="title">Web Development Slot!</h1>
         <Slot />
         <Controls />
       </div>

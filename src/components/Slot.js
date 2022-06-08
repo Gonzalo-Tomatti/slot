@@ -3,6 +3,7 @@ import { useGlobal } from "../context";
 
 const Slot = () => {
   const { rows } = useGlobal();
+
   return (
     <section className="slot-rows-container">
       {rows.map((row, index) => (
