@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text:400|Abril+Fatface:400");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,21 +7,23 @@
 }
 
 body {
-  background: url("./slots-bg.jpg") center/cover fixed no-repeat;
+  background: url("./images/slots-bg.jpg") center/cover fixed no-repeat;
+  font-family: "Crimson Text", serif;
 }
 
 .container {
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 4rem 1fr 4.5rem;
+  justify-content: center;
 }
 
 .title {
-  margin: 1rem 0;
-  font-size: 1.8rem;
+  font-family: "Abril Fatface", sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
   color: orange;
 }
 /* SLOT ROWS */
@@ -38,6 +42,7 @@ body {
   align-items: center;
 }
 
+/* las filas 0 y 4 no se muestran */
 .position0,
 .position4 {
   visibility: hidden;
@@ -54,6 +59,7 @@ body {
   transition: all 0.4s ease;
 }
 
+/* al cambiar de posición cada fila se va moviendo hacia abajo hasta volver a la posición 0 */
 .position0 {
   transform: translateY(-100%);
 }
@@ -104,10 +110,8 @@ body {
 /* CONTROLS */
 
 .controls-container {
-  position: absolute;
-  bottom: 0;
-  min-width: 100vw;
-  height: 5rem;
+  width: 100vw;
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -115,6 +119,7 @@ body {
 }
 
 .btn {
+  font-family: inherit;
   color: white;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -154,7 +159,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 550;
+  font-weight: 600;
 }
 
 .balance-container span {
@@ -163,21 +168,40 @@ body {
 
 .msg {
   text-align: center;
-  width: 8rem;
   display: none;
+  color: white;
+  width: 12rem;
+}
+
+.short-msg {
+  font-size: 1.5rem;
+}
+
+.long-msg {
+  font-size: 1rem;
+}
+
+.difficulty-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 6rem;
+}
+
+.difficulty-container p {
   color: white;
 }
 
-.difficulty {
-  min-width: 5rem;
+.difficulty-btn {
+  width: 3rem;
   border: solid 1px white;
   border-radius: 0.5rem;
-  padding: 0.2rem;
+  padding: 0 0.1rem;
 }
 
-.spinButton {
-  width: 3rem;
-  height: 3rem;
+.spin-btn {
+  width: 3.4rem;
+  height: 3.4rem;
 }
 
 /* MODAL */
@@ -213,12 +237,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
-  max-width: 18rem;
+  width: 18rem;
 }
 
 .rules-container h1 {
   margin-bottom: 1rem;
+  font-size: 3rem;
+  color: orange;
 }
 
 .rules-container h3 {
@@ -253,7 +278,11 @@ body {
 
 @media screen and (min-width: 450px) {
   .rules-container {
-    max-width: 70%;
+    width: 70%;
+  }
+
+  .info {
+    font-size: 1.7rem;
   }
 }
 
@@ -295,41 +324,29 @@ body {
   }
 
   .rules-container {
-    max-width: 80%;
+    width: 80%;
     height: 80%;
-  }
-  .rules-container h1 {
-    margin-bottom: 1rem;
-  }
-
-  .rules-container h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
   }
 }
 
 @media screen and (min-width: 950px) {
   .title {
-    margin: 1rem 0;
-    font-size: 2.25rem;
-    color: orange;
+    font-size: 3rem;
   }
 
-  .balance-container p,
-  .msg,
-  .difficulty {
-    font-size: 1.2rem;
-  }
   .balance-container p {
+    font-size: 1.2rem;
     min-width: 8rem;
   }
-  .msg {
-    width: 11rem;
+
+  .difficulty-container {
+    width: 7rem;
+    font-size: 1.1rem;
   }
 
-  .difficulty {
-    width: 8rem;
-    padding: 0.4rem 0.6rem;
+  .difficulty-btn {
+    width: 3.5rem;
+    padding: 0.2rem 0.4rem;
   }
 
   .icon-container {
@@ -346,13 +363,13 @@ body {
 
   .modal {
     width: 70vw;
-    height: 70vh;
+    height: 80vh;
   }
 }
 
 @media screen and (min-width: 1150px) {
   .controls-container {
-    min-width: 90vw;
+    max-width: 90vw;
   }
   .modal {
     width: 60vw;
@@ -361,6 +378,6 @@ body {
 
 @media screen and (min-width: 1440px) {
   .controls-container {
-    min-width: 80vw;
+    max-width: 80vw;
   }
 }

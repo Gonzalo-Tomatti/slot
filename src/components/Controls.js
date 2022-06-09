@@ -22,11 +22,18 @@ const Controls = () => {
           Apuesta <span>$ {bet}</span>
         </p>
       </div>
-      <p className="msg">{msg}</p>
-      <FaRegPlayCircle onClick={spin} className="spinButton btn" />
-      <button onClick={changeDifficulty} className="difficulty btn">
-        {difficulty === "easy" ? "Modo difícil" : "Modo fácil"}
-      </button>
+      <p //20 es la longitud de 'La fila # ganó $$! '
+        className={`msg ${msg.length < 45 ? "short-msg" : "long-msg"}`}
+      >
+        {msg}
+      </p>
+      <FaRegPlayCircle onClick={spin} className="spin-btn btn" />
+      <div className="difficulty-container">
+        <p>Modo: </p>
+        <button onClick={changeDifficulty} className="difficulty-btn btn">
+          {difficulty === "easy" ? "EASY" : "HARD"}
+        </button>
+      </div>
     </footer>
   );
 };

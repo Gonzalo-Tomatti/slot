@@ -7,9 +7,11 @@ export const GlobalProvider = ({ children }) => {
     <FaCss3 className="icon css3" />,
     <FaHtml5 className="icon html5" />,
   ]);
+
   const randomize = () => {
     return Math.floor(Math.random() * icons.length);
   };
+
   const [rows, setRows] = useState([
     {
       iconsArr: [icons[randomize()], icons[randomize()], icons[randomize()]],
@@ -33,7 +35,6 @@ export const GlobalProvider = ({ children }) => {
     },
   ]);
   const [difficulty, setDifficulty] = useState("easy");
-
   const [cash, setCash] = useState(100);
   const [bet, setBet] = useState(5);
   const [msg, setMsg] = useState("Buena Suerte!");
@@ -47,24 +48,32 @@ export const GlobalProvider = ({ children }) => {
   //esta señal indica cuando la máquinita deja de girar para que se actualicen los resultados. Es solo un número sin importancia que va cambiando
   const [signal, setSignal] = useState(0);
 
-  const changeDifficulty = () => {
-    difficulty === "easy" ? setDifficulty("hard") : setDifficulty("easy");
-  };
-
   const showRules = () => {
     setShowModal(!showModal);
   };
 
+  const changeDifficulty = () => {
+    difficulty === "easy" ? setDifficulty("hard") : setDifficulty("easy");
+  };
+
   useEffect(() => {
     if (difficulty === "easy") {
+      //hay 66% de posibilidades de que salga html5 y 33% css
       setIcons([
-        <FaCss3 className="icon css3" />,
         <FaHtml5 className="icon html5" />,
+        <FaHtml5 className="icon html5" />,
+        <FaCss3 className="icon css3" />,
       ]);
     } else {
+      //en modo hard se agregan dos íconos
       setIcons([
-        <FaCss3 className="icon css3" />,
         <FaHtml5 className="icon html5" />,
+        <FaHtml5 className="icon html5" />,
+        <FaHtml5 className="icon html5" />,
+        <FaCss3 className="icon css3" />,
+        <FaCss3 className="icon css3" />,
+        <FaCss3 className="icon css3" />,
+        <FaBootstrap className="icon bootstrap" />,
         <FaBootstrap className="icon bootstrap" />,
         <FaReact className="icon react" />,
       ]);
@@ -124,6 +133,7 @@ export const GlobalProvider = ({ children }) => {
         ...rows
           .filter((row) => row.position > 0 && row.position < 4)
           .map((row) => {
+            //checkea si los tres íconos de la fila son iguales
             const win =
               row.iconsArr[0].props.className ==
                 row.iconsArr[1].props.className &&
@@ -147,7 +157,7 @@ export const GlobalProvider = ({ children }) => {
       results.forEach((result) => {
         if (result.isAWinner) {
           const prize = winMultiplier(bet, result.winningIcon, result.pos);
-          winners += `La fila ${result.pos} ganó: $${prize}!\n`;
+          winners += `La fila ${result.pos} ganó $${prize}! `;
         }
       });
       if (!winners) {

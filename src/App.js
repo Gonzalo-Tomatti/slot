@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="container">
       <Modal />
-      <h1 className="title">Web Development Slot!</h1>
+      <h1 className="title">Web-Dev Slot!</h1>
       <Slot />
       <Controls />
     </div>
