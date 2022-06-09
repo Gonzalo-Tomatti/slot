@@ -85,16 +85,16 @@ body {
   height: 4.5rem;
 }
 
-.bootstrap {
-  color: blueviolet;
+.html5 {
+  color: orange;
 }
 
 .css3 {
   color: rgb(34, 153, 248);
 }
 
-.html5 {
-  color: orange;
+.bootstrap {
+  color: blueviolet;
 }
 
 .react {
@@ -114,24 +114,31 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.btn {
+  color: white;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn:hover {
+  color: orange;
+  border-color: orange;
+}
+
 .info {
   display: grid;
   place-items: center;
-  background: transparent;
-  cursor: pointer;
   font-size: 1.5rem;
   border: transparent;
-  color: white;
 }
 .rules {
-  color: white;
   border: solid 2px white;
   display: none;
-  background: transparent;
-  cursor: pointer;
   border-radius: 0.5rem;
   font-size: 2rem;
   font-weight: bold;
+  padding: 0.2rem 0.5rem;
 }
 
 .balance-container {
@@ -161,28 +168,92 @@ body {
 }
 
 .difficulty {
-  cursor: pointer;
   min-width: 5rem;
-  color: white;
   border: solid 1px white;
-  background: transparent;
   border-radius: 0.5rem;
   padding: 0.2rem;
 }
 
 .spinButton {
-  color: white;
-
-  background: transparent;
-  cursor: pointer;
   width: 3rem;
   height: 3rem;
 }
 
 /* MODAL */
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.show-modal {
+  visibility: visible;
+  z-index: 1;
+}
 .modal {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  max-width: 18rem;
+}
+
+.rules-container h1 {
+  margin-bottom: 1rem;
+}
+
+.rules-container h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.rules-container ul {
+  margin-bottom: 1.5rem;
+  list-style: none;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.rules-container ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.modal-btn {
   position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  transition: all;
+  color: orange;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 450px) {
+  .rules-container {
+    max-width: 70%;
+  }
 }
 
 @media screen and (min-width: 550px) {
@@ -214,6 +285,25 @@ body {
   .icon {
     width: 5.5rem;
     height: 5.5rem;
+  }
+
+  .modal {
+    width: 90vw;
+    height: 90vh;
+    border-radius: 2rem;
+  }
+
+  .rules-container {
+    max-width: 80%;
+    height: 80%;
+  }
+  .rules-container h1 {
+    margin-bottom: 1rem;
+  }
+
+  .rules-container h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -252,11 +342,19 @@ body {
     width: 6rem;
     height: 6rem;
   }
+
+  .modal {
+    width: 70vw;
+    height: 70vh;
+  }
 }
 
 @media screen and (min-width: 1150px) {
   .controls-container {
     min-width: 90vw;
+  }
+  .modal {
+    width: 60vw;
   }
 }
 

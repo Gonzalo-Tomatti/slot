@@ -8,10 +8,10 @@ const Controls = () => {
     useGlobal();
   return (
     <footer className="controls-container">
-      <button onClick={showRules} className="rules">
+      <button onClick={showRules} className="rules btn">
         REGLAS
       </button>
-      <button onClick={showRules} className="info">
+      <button onClick={showRules} className="info btn">
         <FaInfoCircle />
       </button>
       <div className="balance-container">
@@ -23,10 +23,10 @@ const Controls = () => {
         </p>
       </div>
       <p className="msg">{msg}</p>
-      <button onClick={changeDifficulty} className="difficulty">
+      <FaRegPlayCircle onClick={spin} className="spinButton btn" />
+      <button onClick={changeDifficulty} className="difficulty btn">
         {difficulty === "easy" ? "Modo difícil" : "Modo fácil"}
       </button>
-      <FaRegPlayCircle onClick={spin} className="spinButton" />
     </footer>
   );
 };
