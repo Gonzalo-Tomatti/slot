@@ -162,6 +162,7 @@ body {
 }
 
 .msg {
+  text-align: center;
   width: 8rem;
   display: none;
   color: white;

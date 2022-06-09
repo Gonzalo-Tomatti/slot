@@ -36,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
 
   const [cash, setCash] = useState(100);
   const [bet, setBet] = useState(5);
-  const [msg, setMsg] = useState("Good Luck!");
+  const [msg, setMsg] = useState("Buena Suerte!");
   const [isSpinning, setIsSpinning] = useState(false);
   const [results, setResults] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -151,7 +151,7 @@ export const GlobalProvider = ({ children }) => {
         }
       });
       if (!winners) {
-        winners = "Try again!";
+        winners = "Intenta de nuevo!";
       }
       setMsg(winners);
     }
