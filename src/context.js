@@ -14,7 +14,7 @@ export const GlobalProvider = ({ children }) => {
 
   const [rows, setRows] = useState([
     {
-      iconsArr: [icons[randomize()], icons[randomize()], icons[randomize()]],
+      iconsArr: [],
       position: 0,
     },
     {
@@ -32,6 +32,14 @@ export const GlobalProvider = ({ children }) => {
     {
       iconsArr: [icons[randomize()], icons[randomize()], icons[randomize()]],
       position: 4,
+    },
+    {
+      iconsArr: [],
+      position: 5,
+    },
+    {
+      iconsArr: [],
+      position: 6,
     },
   ]);
   const [difficulty, setDifficulty] = useState("easy");
@@ -54,6 +62,24 @@ export const GlobalProvider = ({ children }) => {
 
   const changeDifficulty = () => {
     difficulty === "easy" ? setDifficulty("hard") : setDifficulty("easy");
+  };
+
+  const handleCash = (value) => {
+    if (isNaN(value)) {
+      setCash((prevCash) => prevCash);
+    } else {
+      setCash(+value);
+    }
+  };
+
+  const handleBet = (value) => {
+    if (isNaN(value)) {
+      setBet((prevBet) => prevBet);
+    } else if (value > 1000) {
+      setBet(1000);
+    } else {
+      setBet(+value);
+    }
   };
 
   useEffect(() => {
@@ -82,9 +108,13 @@ export const GlobalProvider = ({ children }) => {
 
   const spin = () => {
     if (!isSpinning) {
-      setMsg("");
-      setCash((prevCash) => prevCash - bet);
-      spinIcons();
+      if (cash === 0 || bet === 0 || cash < bet) {
+        setMsg("Apuesta inválida");
+      } else {
+        setMsg("");
+        setCash((prevCash) => prevCash - bet);
+        spinIcons();
+      }
     }
   };
 
@@ -94,12 +124,12 @@ export const GlobalProvider = ({ children }) => {
       () =>
         setRows((prevRows) => {
           const newRows = prevRows.map((row) => {
-            //SI ES EL ÚLTIMO VUELVE AL PRINCIPIO
-            if (row.position === 4) {
+            //SI ES LA ÚLTIMA FILA VUELVE AL PRINCIPIO
+            if (row.position === 6) {
               return { ...row, position: 0 };
             }
-            //SI ES EL PRIMERO CAMBIA LOS ÍCONOS
-            else if (row.position === 0) {
+            //CUANDO ESTÁ POR MOSTRARSE DE NUEVO CAMBIA LOS ÍCONOS
+            else if (row.position === 1) {
               return {
                 iconsArr: [
                   icons[randomize()],
@@ -116,14 +146,14 @@ export const GlobalProvider = ({ children }) => {
           });
           return newRows;
         }),
-      400
+      200
     );
     setTimeout(() => {
       clearInterval(iconsSpinning);
       setIsSpinning(false);
       setFirstLoad(false);
       setSignal((prevSignal) => prevSignal + 1);
-    }, 3000);
+    }, 2400);
   };
 
   //setear resultados
@@ -131,7 +161,7 @@ export const GlobalProvider = ({ children }) => {
     if (!firstLoad) {
       const orderedResults = [
         ...rows
-          .filter((row) => row.position > 0 && row.position < 4)
+          .filter((row) => row.position > 1 && row.position < 5)
           .map((row) => {
             //checkea si los tres íconos de la fila son iguales
             const win =
@@ -157,7 +187,7 @@ export const GlobalProvider = ({ children }) => {
       results.forEach((result) => {
         if (result.isAWinner) {
           const prize = winMultiplier(bet, result.winningIcon, result.pos);
-          winners += `La fila ${result.pos} ganó $${prize}! `;
+          winners += `La fila ${result.pos - 1} ganó $${prize}! `;
         }
       });
       if (!winners) {
@@ -184,7 +214,7 @@ export const GlobalProvider = ({ children }) => {
         iconMultiplier = 5;
         break;
     }
-    if (row === 2) {
+    if (row === 3) {
       rowMultiplier = 2;
     }
     const winnings = iconMultiplier * bet * rowMultiplier;
@@ -205,6 +235,8 @@ export const GlobalProvider = ({ children }) => {
         changeDifficulty,
         spin,
         showRules,
+        handleCash,
+        handleBet,
       }}
     >
       {children}

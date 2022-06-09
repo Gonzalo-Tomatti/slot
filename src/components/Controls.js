@@ -4,8 +4,17 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 
 const Controls = () => {
-  const { difficulty, changeDifficulty, spin, cash, bet, msg, showRules } =
-    useGlobal();
+  const {
+    difficulty,
+    changeDifficulty,
+    spin,
+    cash,
+    bet,
+    msg,
+    showRules,
+    handleCash,
+    handleBet,
+  } = useGlobal();
   return (
     <footer className="controls-container">
       <button onClick={showRules} className="rules btn">
@@ -15,15 +24,36 @@ const Controls = () => {
         <FaInfoCircle />
       </button>
       <div className="balance-container">
-        <p>
-          Crédito <span>$ {cash}</span>
-        </p>
-        <p>
-          Apuesta <span>$ {bet}</span>
-        </p>
+        <div className="balance-item">
+          <label>Crédito </label>
+          <span>
+            $
+            <input
+              type="text"
+              minLength={1}
+              maxLength={5}
+              value={`${cash}`}
+              onChange={(e) => handleCash(e.target.value)}
+            />
+          </span>
+        </div>
+
+        <div className="balance-item">
+          <label>Apuesta </label>
+          <span>
+            $
+            <input
+              type="text"
+              minLength={1}
+              maxLength={4}
+              value={`${bet}`}
+              onChange={(e) => handleBet(e.target.value)}
+            />
+          </span>
+        </div>
       </div>
-      <p //20 es la longitud de 'La fila # ganó $$! '
-        className={`msg ${msg.length < 45 ? "short-msg" : "long-msg"}`}
+      <p //22 es la longitud de 'La fila # ganó $####! '
+        className={`msg ${msg.length < 44 ? "short-msg" : "long-msg"}`}
       >
         {msg}
       </p>

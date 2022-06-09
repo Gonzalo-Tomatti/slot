@@ -22,7 +22,7 @@ const Modal = () => {
           <h3>Filas</h3>
           <ul>
             <li>Primer y tercer filas multiplican las ganancias x2.</li>
-            <li>La segunda fila multiplica las ganancias x2.</li>
+            <li>La segunda fila multiplica las ganancias x3.</li>
           </ul>
           <h3>Íconos</h3>
           <ul className="modal-icons-rules">

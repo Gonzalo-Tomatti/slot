@@ -9,6 +9,7 @@
 body {
   background: url("./images/slots-bg.jpg") center/cover fixed no-repeat;
   font-family: "Crimson Text", serif;
+  --main-color: orange;
 }
 
 .container {
@@ -24,7 +25,7 @@ body {
   font-family: "Abril Fatface", sans-serif;
   text-align: center;
   font-size: 2.5rem;
-  color: orange;
+  color: var(--main-color);
 }
 /* SLOT ROWS */
 .slot-rows-container {
@@ -42,9 +43,12 @@ body {
   align-items: center;
 }
 
-/* las filas 0 y 4 no se muestran */
+/* las filas 0 ,4 y 5 no se muestran */
+/* la fila 5 fue agregada porque al girar cada 300ms se podía ver la cuarta fila yendo hacía arriba antes de ponerse visibility: hidden */
 .position0,
-.position4 {
+.position1,
+.position5,
+.position6 {
   visibility: hidden;
 }
 
@@ -52,7 +56,9 @@ body {
 .position1,
 .position2,
 .position3,
-.position4 {
+.position4,
+.position5,
+.position6 {
   position: absolute;
   top: 0;
   left: 0;
@@ -61,20 +67,26 @@ body {
 
 /* al cambiar de posición cada fila se va moviendo hacia abajo hasta volver a la posición 0 */
 .position0 {
-  transform: translateY(-100%);
+  transform: translateY(-200%);
 }
 .position1 {
-  transform: translateY(0);
+  transform: translateY(-100%);
 }
 .position2 {
-  transform: translateY(100%);
+  transform: translateY(0);
 }
 .position3 {
-  transform: translateY(200%);
+  transform: translateY(100%);
 }
 
 .position4 {
+  transform: translateY(200%);
+}
+.position5 {
   transform: translateY(300%);
+}
+.position6 {
+  transform: translateY(400%);
 }
 
 .icon-container {
@@ -127,8 +139,13 @@ body {
 }
 
 .btn:hover {
-  color: orange;
-  border-color: orange;
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.btn:active {
+  color: rgb(193, 126, 0);
+  border-color: rgb(193, 126, 0);
 }
 
 .info {
@@ -147,30 +164,37 @@ body {
 }
 
 .balance-container {
-  min-width: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.balance-container p {
-  color: orange;
-  min-width: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-weight: 600;
 }
 
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-container label {
+  color: var(--main-color);
+}
 .balance-container span {
   color: white;
+  margin-left: 0.3rem;
+}
+.balance-container input {
+  color: white;
+  background: transparent;
+  width: 3rem;
+  outline: none;
 }
 
 .msg {
   text-align: center;
   display: none;
   color: white;
-  width: 12rem;
+  width: 13rem;
 }
 
 .short-msg {
@@ -243,7 +267,7 @@ body {
 .rules-container h1 {
   margin-bottom: 1rem;
   font-size: 3rem;
-  color: orange;
+  color: var(--main-color);
 }
 
 .rules-container h3 {
@@ -271,7 +295,7 @@ body {
   right: 1.5rem;
   font-size: 2rem;
   transition: all;
-  color: orange;
+  color: var(--main-color);
   background: transparent;
   cursor: pointer;
 }
@@ -334,9 +358,8 @@ body {
     font-size: 3rem;
   }
 
-  .balance-container p {
+  .balance-container label {
     font-size: 1.2rem;
-    min-width: 8rem;
   }
 
   .difficulty-container {
