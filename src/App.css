@@ -9,7 +9,7 @@
 body {
   background: url("./images/slots-bg.jpg") center/cover fixed no-repeat;
   font-family: "Crimson Text", serif;
-  --main-color: orange;
+  --main-color: #ffa500;
 }
 
 .container {
@@ -21,12 +21,27 @@ body {
   justify-content: center;
 }
 
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   font-family: "Abril Fatface", sans-serif;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: var(--main-color);
 }
+
+header img {
+  width: 5rem;
+  height: 3rem;
+}
+/* logo design url: logomakr.com/app/33ypEA */
+
 /* SLOT ROWS */
 .slot-rows-container {
   position: relative;
@@ -119,11 +134,11 @@ body {
 }
 
 .html5 {
-  color: orange;
+  color: #ffa500;
 }
 
 .css3 {
-  color: rgb(34, 153, 248);
+  color: #2299f8;
 }
 
 .bootstrap {
@@ -131,7 +146,7 @@ body {
 }
 
 .react {
-  color: aqua;
+  color: #00ffff;
 }
 
 /* CONTROLS */
@@ -173,7 +188,7 @@ body {
   border: solid 2px white;
   display: none;
   border-radius: 0.5rem;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   padding: 0.2rem 0.5rem;
 }
@@ -239,8 +254,15 @@ body {
 }
 
 .spin-btn {
-  width: 3.4rem;
-  height: 3.4rem;
+  border: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.play {
+  display: none;
 }
 
 /* MODAL */
@@ -357,6 +379,13 @@ body {
   }
 }
 @media screen and (min-width: 450px) {
+  .play {
+    display: block;
+  }
+  .spin-btn {
+    font-size: 1.7rem;
+  }
+
   .rules-container {
     width: 70%;
   }
@@ -431,6 +460,11 @@ body {
     font-size: 3rem;
   }
 
+  header img {
+    width: 6rem;
+    height: 4rem;
+  }
+
   .balance-container label {
     font-size: 1.2rem;
   }
@@ -443,6 +477,10 @@ body {
   .difficulty-btn {
     width: 3.5rem;
     padding: 0.2rem 0.4rem;
+  }
+
+  .rules {
+    font-size: 1.3rem;
   }
 
   .icon-container {

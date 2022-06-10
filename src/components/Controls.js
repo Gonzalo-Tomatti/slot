@@ -1,6 +1,6 @@
 import React from "react";
 import { useGlobal } from "../context";
-import { FaRegPlayCircle } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 
 const Controls = () => {
@@ -57,7 +57,9 @@ const Controls = () => {
       >
         {msg}
       </p>
-      <FaRegPlayCircle onClick={spin} className="spin-btn btn" />
+      <button onClick={spin} className="spin-btn btn">
+        <FaPlay /> <p className="play">play</p>
+      </button>
       <div className="difficulty-container">
         <p>Modo: </p>
         <button onClick={changeDifficulty} className="difficulty-btn btn">
