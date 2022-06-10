@@ -232,6 +232,7 @@ export const GlobalProvider = ({ children }) => {
         msg,
         difficulty,
         showModal,
+        isSpinning,
         changeDifficulty,
         spin,
         showRules,
