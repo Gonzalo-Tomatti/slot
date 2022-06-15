@@ -385,7 +385,7 @@ header img {
     width: 95%;
   }
 }
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 425px) {
   .play {
     display: block;
   }
@@ -403,7 +403,7 @@ header img {
   }
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 576px) {
   .rules-btn {
     display: block;
   }
@@ -415,7 +415,7 @@ header img {
     width: 75%;
   }
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 768px) {
   .msg {
     display: block;
   }
@@ -445,13 +445,7 @@ header img {
   }
 }
 
-@media screen and (min-width: 800px) {
-  .slot-row {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 992px) {
   .title {
     font-size: 3rem;
   }
@@ -493,7 +487,6 @@ header img {
 
   .modal {
     width: 70vw;
-    height: 80vh;
   }
 
   .slot-row {
@@ -501,7 +494,7 @@ header img {
   }
 }
 
-@media screen and (min-width: 1150px) {
+@media screen and (min-width: 1200px) {
   .controls-container {
     max-width: 90vw;
   }
@@ -514,7 +507,7 @@ header img {
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1400px) {
   .controls-container {
     max-width: 80vw;
   }
