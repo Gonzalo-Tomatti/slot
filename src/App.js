@@ -7,10 +7,12 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="container">
-      <Modal />
-      <Header />
-      <Slot />
-      <Controls />
+      <div className="container-center">
+        <Modal />
+        <Header />
+        <Slot />
+        <Controls />
+      </div>
     </div>
   );
 }

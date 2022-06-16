@@ -7,17 +7,28 @@
 }
 
 body {
-  background: url("./images/slots-bg.jpg") center/cover fixed no-repeat;
   font-family: "Crimson Text", serif;
   --main-color: #ffa500;
 }
 
 .container {
-  position: relative;
+  display: grid;
+  place-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  display: grid;
-  justify-content: center;
+  background-color: black;
+}
+
+.container-center {
+  position: relative;
+  background: url("./images/slots-bg.jpg") center/cover fixed no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* HEADER */
@@ -26,6 +37,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 4rem;
 }
 
 .title {
@@ -43,15 +55,13 @@ header img {
   width: 5rem;
   height: 3rem;
 }
-/* logo design url: logomakr.com/app/33ypEA */
 
 /* SLOT ROWS */
 .slot-rows-container {
   position: relative;
   overflow: hidden;
   min-width: 100vw;
-  height: calc(100vh - (4rem + 4.5rem));
-  min-height: 25rem;
+  height: 28rem;
   display: grid;
   place-items: center;
 }
@@ -62,6 +72,18 @@ header img {
   height: 33%;
   justify-content: center;
   align-items: center;
+}
+
+.icon-container {
+  display: grid;
+  place-items: center;
+  margin: 0 0.5rem;
+  height: 100%;
+}
+
+.icon {
+  width: 90%;
+  height: 90%;
 }
 
 /* las filas 0 ,4 y 5 no se muestran */
@@ -123,17 +145,6 @@ header img {
   background: rgba(0, 255, 255, 0.25);
 }
 
-.icon-container {
-  display: grid;
-  place-items: center;
-  margin: 0 0.5rem;
-}
-
-.icon {
-  width: 5.5rem;
-  height: 5.5rem;
-}
-
 .html5 {
   color: #ffa500;
 }
@@ -154,6 +165,7 @@ header img {
 
 .controls-container {
   width: 100vw;
+  height: 4.5rem;
   justify-self: center;
   display: flex;
   align-items: center;
@@ -284,6 +296,7 @@ header img {
   place-items: center;
   visibility: hidden;
   z-index: -1;
+  overflow: scroll;
 }
 
 .show-modal {
@@ -305,7 +318,6 @@ header img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 18rem;
 }
 
 .rules-container h1 {
@@ -385,11 +397,6 @@ header img {
   .slot-row {
     width: 95%;
   }
-
-  .icon {
-    width: 6rem;
-    height: 6rem;
-  }
 }
 @media screen and (min-width: 425px) {
   .play {
@@ -424,16 +431,15 @@ header img {
   .slot-row {
     width: 75%;
   }
-  .icon {
-    width: 7rem;
-    height: 7rem;
-  }
 }
 @media screen and (min-width: 768px) {
   .msg {
     display: block;
   }
 
+  .difficulty-container p {
+    font-size: 1.1rem;
+  }
   .icon-container {
     margin: 0 0.6rem;
   }
@@ -459,9 +465,20 @@ header img {
     width: 6rem;
     height: 4rem;
   }
+  .title {
+    font-size: 4rem;
+  }
+
+  .play {
+    font-size: 2rem;
+  }
+
+  .play-icon {
+    font-size: 1.8rem;
+  }
 
   .balance-container label {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .difficulty-container {
@@ -469,7 +486,7 @@ header img {
   }
 
   .difficulty-container p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
   .difficulty-btn {
@@ -491,11 +508,6 @@ header img {
 
   .slot-row {
     width: 55%;
-  }
-
-  .icon {
-    width: 8rem;
-    height: 8rem;
   }
 }
 
