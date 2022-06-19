@@ -8,4 +8,4 @@ Slot Machine.
  
   No se permite jugar si el valor de la apuesta está en 0 o si el dinero es insuficiente para la apuesta especificada.
   
- La app utiliza Html5, Css3 y Javascript con el framework React. Para correrla después de clonar el repositorio (si se tiene npm instalado) utilizar el comando 'npm install' lo que instalará los módulos necesarios y sus dependencias y luego 'npm start' para ejecutarla.
+ La app utiliza Html5, Css3 y Javascript con la librería React.js. Para correrla después de clonar el repositorio (si se tiene npm instalado) utilizar el comando 'npm install', lo que instalará los módulos necesarios y sus dependencias, y luego 'npm start' para ejecutarla.
